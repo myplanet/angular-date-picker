@@ -1,11 +1,11 @@
-.angular-calendar {
+.angular-date-picker {
     color: #333;
     font: normal 14px sans-serif;
     border: 1px solid #ddd;
     display: inline-block;
     background: #fff;
 }
-.angular-calendar > ._month {
+.angular-date-picker > ._month {
     text-align: center;
     line-height: 22px;
     padding: 10px;
@@ -15,7 +15,7 @@
     border-bottom: 1px solid #ddd;
     position: relative;
 }
-.angular-calendar > ._month > button {
+.angular-date-picker > ._month > button {
     color: #555;
     font: normal 14px sans-serif;
     outline: none;
@@ -24,47 +24,47 @@
     border: none;
     cursor: pointer;
 }
-.angular-calendar > ._month > button:hover {
+.angular-date-picker > ._month > button:hover {
     color: #333;
 }
-.angular-calendar > ._month > button._previous {
+.angular-date-picker > ._month > button._previous {
     left: 10px;
 }
-.angular-calendar > ._month > button._next {
+.angular-date-picker > ._month > button._next {
     right: 10px;
 }
-.angular-calendar > ._days {
+.angular-date-picker > ._days {
     width: 210px; /* 30 x 7 */
     margin: 10px;
     text-align: center;
 }
-.angular-calendar > ._days > ._day-of-week, .angular-calendar > ._days > ._day {
+.angular-date-picker > ._days > ._day-of-week, .angular-date-picker > ._days > ._day {
     box-sizing: border-box;
     border: 1px solid transparent;
     width: 30px;
     line-height: 28px;
     float: left;
 }
-.angular-calendar > ._days > ._day-of-week {
+.angular-date-picker > ._days > ._day-of-week {
     font-weight: bold;
 }
-.angular-calendar > ._days > ._day.-padding {
+.angular-date-picker > ._days > ._day.-padding {
     opacity: .5;
     cursor: default;
 }
-.angular-calendar > ._days > ._day.-selectable {
+.angular-date-picker > ._days > ._day.-selectable {
     cursor: pointer;
 }
-.angular-calendar > ._days > ._day.-selectable.-selected {
+.angular-date-picker > ._days > ._day.-selectable.-selected {
     background: #e0e0e0;
 }
-.angular-calendar > ._days > ._day.-selectable.-today {
+.angular-date-picker > ._days > ._day.-selectable.-today {
     border-color: #aaa;
 }
-.angular-calendar > ._days > ._day.-selectable:hover {
+.angular-date-picker > ._days > ._day.-selectable:hover {
     background: #eee;
 }
-.angular-calendar > ._days:after {
+.angular-date-picker > ._days:after {
     content: '';
     display: block;
     clear: left;

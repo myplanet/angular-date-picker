@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>angular-calendar examples</title>
-    <link rel="stylesheet" href="../angular-calendar.css" />
+    <title>angular-date-picker examples</title>
+    <link rel="stylesheet" href="../angular-date-picker.css" />
     <style>
     body {
         margin: 0;
@@ -28,40 +28,40 @@
         padding: 10px;
         background: #eee;
     }
-    .custom > .angular-calendar {
+    .custom > .angular-date-picker {
         border-color: #444;
         background-color: #666;
         color: #fff;
         border-radius: 5px;
     }
-    .custom > .angular-calendar > ._month {
+    .custom > .angular-date-picker > ._month {
         background-color: #555;
         border-color: #444;
     }
-    .custom > .angular-calendar > ._month > button {
+    .custom > .angular-date-picker > ._month > button {
         color: #ddd;
     }
-    .custom > .angular-calendar > ._month > button:hover {
+    .custom > .angular-date-picker > ._month > button:hover {
         color: #fff;
     }
-    .custom > .angular-calendar > ._days > ._day.-selectable {
+    .custom > .angular-date-picker > ._days > ._day.-selectable {
         border-radius: 3px;
     }
-    .custom > .angular-calendar > ._days > ._day.-selectable.-selected {
+    .custom > .angular-date-picker > ._days > ._day.-selectable.-selected {
         background: #ff4795;
     }
-    .custom > .angular-calendar > ._days > ._day.-selectable.-today {
+    .custom > .angular-date-picker > ._days > ._day.-selectable.-today {
         border-color: #a8004f;
     }
-    .custom > .angular-calendar > ._days > ._day.-selectable:hover {
+    .custom > .angular-date-picker > ._days > ._day.-selectable:hover {
         background: #ff71b9;
     }
     </style>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="../angular-calendar.js"></script>
+    <script src="../angular-date-picker.js"></script>
     <script>
         angular
-            .module('examples', [ 'mp.calendar' ])
+            .module('examples', [ 'mp.datePicker' ])
             .controller('formatting', [ '$scope', function ($scope) {
                 $scope.formatDate = function (date) {
                     function pad(n) { return n < 10 ? '0' + n : n };
@@ -83,18 +83,18 @@
 
     <pre>
 &lt;input type="text" ng-model="date1" /&gt;
-&lt;calendar ng-model="date1"&gt;&lt;/calendar&gt;</pre>
+&lt;date-picker ng-model="date1"&gt;&lt;/date-picker&gt;</pre>
 
     <p>
         <input type="text" ng-model="date1" />
-        <calendar ng-model="date1"></calendar>
+        <date-picker ng-model="date1"></date-picker>
     </p>
 
     <h2>Custom Date Format</h2>
 
     <pre>
 &lt;input type="text" ng-model="date2" placeholder="YYYY-MM-DD" /&gt;
-&lt;calendar ng-model="date2" parse-date="parseDate" format-date="formatDate"&gt;&lt;/calendar&gt;</pre>
+&lt;date-picker ng-model="date2" parse-date="parseDate" format-date="formatDate"&gt;&lt;/date-picker&gt;</pre>
 
     <pre>
 $scope.formatDate = function (date) {
@@ -107,18 +107,18 @@ $scope.formatDate = function (date) {
 $scope.parseDate = function (s) {
     var tokens = /^(\d{4})-(\d\d)-(\d\d)$/.exec(s);
 
-    return tokens && new Date(tokens[1], tokens[2] - 1, tokens[3]);
+    return tokens &amp;&amp; new Date(tokens[1], tokens[2] - 1, tokens[3]);
 };</pre>
 
     <p>
         <input type="text" ng-model="date2" placeholder="YYYY-MM-DD" />
-        <calendar ng-model="date2" parse-date="parseDate" format-date="formatDate"></calendar>
+        <date-picker ng-model="date2" parse-date="parseDate" format-date="formatDate"></date-picker>
     </p>
 
     <h2>Custom Styling</h2>
 
     <p class="custom">
-        <calendar></calendar>
+        <date-picker></date-picker>
     </p>
 </body>
 </html>

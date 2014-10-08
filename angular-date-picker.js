@@ -8,17 +8,17 @@
             root.mp = {};
         }
 
-        root.mp.calendar = factory(root.angular);
+        root.mp.datePicker = factory(root.angular);
     }
 }(this, function (angular) {
     'use strict';
 
-    return angular.module('mp.calendar', []).directive('calendar', [ '$window', function ($window) {
+    return angular.module('mp.datePicker', []).directive('date-picker', [ '$window', function ($window) {
         // Introduce custom elements for IE8
-        $window.document.createElement('calendar');
+        $window.document.createElement('date-picker');
 
         var tmpl = ''
-+ '<div class="angular-calendar">'
++ '<div class="angular-date-picker">'
 + '    <div class="_month">'
 + '        <button type="button" class="_previous" title="Previous Month" ng-click="changeMonthBy(-1)">&laquo;</button>'
 + '        {{ months[month].shortName }} {{ year }}'

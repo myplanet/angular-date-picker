@@ -1,5 +1,4 @@
-angular-calendar
-================
+# angular-date-picker
 
 A lightweight calendar component for Angular
 
@@ -7,21 +6,21 @@ A lightweight calendar component for Angular
 ## Usage
 
 ```
-bower install angular-calendar
+bower install angular-date-picker
 ```
 
 ```
-angular.module('app', [ 'mp.calendar' ]);
+angular.module('app', [ 'mp.datePicker' ]);
 ```
 
 ### As an element
 ```
-<calendar></calendar>
+<date-picker></date-picker>
 ```
 
 ### As an attribute
 ```
-<div calendar></div>
+<div date-picker></div>
 ```
 
 ### Model binding
@@ -29,6 +28,6 @@ angular.module('app', [ 'mp.calendar' ]);
 <label>
     Start Date
     <input type="text ng-model="startDate" />
-    <calendar ng-model="startDate"></calendar>
+    <date-picker ng-model="startDate"></date-picker>
 </label>
 ```
