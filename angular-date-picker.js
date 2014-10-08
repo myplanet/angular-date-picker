@@ -13,7 +13,7 @@
 }(this, function (angular) {
     'use strict';
 
-    return angular.module('mp.datePicker', []).directive('date-picker', [ '$window', function ($window) {
+    return angular.module('mp.datePicker', []).directive('datePicker', [ '$window', function ($window) {
         // Introduce custom elements for IE8
         $window.document.createElement('date-picker');
 
