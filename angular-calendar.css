@@ -16,13 +16,16 @@
     position: relative;
 }
 .angular-calendar > ._month > button {
-    color: #333;
+    color: #555;
     font: normal 14px sans-serif;
     outline: none;
     position: absolute;
     background: transparent;
     border: none;
     cursor: pointer;
+}
+.angular-calendar > ._month > button:hover {
+    color: #333;
 }
 .angular-calendar > ._month > button._previous {
     left: 10px;
@@ -53,13 +56,13 @@
     cursor: pointer;
 }
 .angular-calendar > ._days > ._day.-selectable.-selected {
-    background: #ededed;
+    background: #e0e0e0;
 }
 .angular-calendar > ._days > ._day.-selectable.-today {
-    border-color: #22B3B0;
+    border-color: #aaa;
 }
 .angular-calendar > ._days > ._day.-selectable:hover {
-    background: #f0fafe;
+    background: #eee;
 }
 .angular-calendar > ._days:after {
     content: '';
