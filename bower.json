@@ -1,0 +1,19 @@
+{
+  "name": "angular-calendar",
+  "version": "0.0.0",
+  "authors": [
+    "Ates Goral <ates.g@myplanet.io>"
+  ],
+  "main": "angular-calendar.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}

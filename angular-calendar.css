@@ -1,0 +1,69 @@
+.angular-calendar {
+    color: #333;
+    font: normal 14px sans-serif;
+    border: 1px solid #ddd;
+    display: inline-block;
+    background: #fff;
+}
+.angular-calendar > ._month {
+    text-align: center;
+    line-height: 22px;
+    padding: 10px;
+    background: #fcfcfc;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+.angular-calendar > ._month > button {
+    color: #333;
+    font: normal 14px sans-serif;
+    outline: none;
+    position: absolute;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.angular-calendar > ._month > button._previous {
+    left: 10px;
+}
+.angular-calendar > ._month > button._next {
+    right: 10px;
+}
+.angular-calendar > ._days {
+    width: 210px; /* 30 x 7 */
+    margin: 10px;
+    text-align: center;
+}
+.angular-calendar > ._days > ._day-of-week, .angular-calendar > ._days > ._day {
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    width: 30px;
+    line-height: 28px;
+    float: left;
+}
+.angular-calendar > ._days > ._day-of-week {
+    font-weight: bold;
+}
+.angular-calendar > ._days > ._day.-padding {
+    opacity: .5;
+    cursor: default;
+}
+.angular-calendar > ._days > ._day.-selectable {
+    cursor: pointer;
+}
+.angular-calendar > ._days > ._day.-selectable.-selected {
+    background: #ededed;
+}
+.angular-calendar > ._days > ._day.-selectable.-today {
+    border-color: #22B3B0;
+}
+.angular-calendar > ._days > ._day.-selectable:hover {
+    background: #f0fafe;
+}
+.angular-calendar > ._days:after {
+    content: '';
+    display: block;
+    clear: left;
+    height: 0;
+}
