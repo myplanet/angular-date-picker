@@ -130,11 +130,13 @@
 
                 if (ngModel) {
                     ngModel.$render = function () {
-                        selectedDate = $scope.parseDate
-                            ? $scope.parseDate(ngModel.$viewValue)
-                            : ngModel.$viewValue;
+                        selectedDate = ngModel.$viewValue
+                            ? $scope.parseDate
+                                ? $scope.parseDate(ngModel.$viewValue)
+                                : new Date(ngModel.$viewValue)
+                            : null;
 
-                        if (selectedDate) {
+                        if (selectedDate && !isNaN(selectedDate)) {
                             setYearAndMonth(selectedDate);
                         } else {
                             // Bad input, stay on current year and month, but reset selected date
@@ -161,7 +163,7 @@
                             ngModel.$setViewValue(
                                 $scope.formatDate
                                     ? $scope.formatDate(selectedDate)
-                                    : selectedDate
+                                    : selectedDate.toLocaleDateString()
                             );
                         }
 
