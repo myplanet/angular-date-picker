@@ -1,6 +1,6 @@
 {
   "name": "angular-calendar",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "authors": [
     "Ates Goral <ates.g@myplanet.io>"
   ],
@@ -12,7 +12,6 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
-    "node_modules",
     "bower_components",
     "test"
   ]
