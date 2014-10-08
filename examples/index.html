@@ -28,6 +28,34 @@
         padding: 10px;
         background: #eee;
     }
+    .custom > .angular-calendar {
+        border-color: #444;
+        background-color: #666;
+        color: #fff;
+        border-radius: 5px;
+    }
+    .custom > .angular-calendar > ._month {
+        background-color: #555;
+        border-color: #444;
+    }
+    .custom > .angular-calendar > ._month > button {
+        color: #ddd;
+    }
+    .custom > .angular-calendar > ._month > button:hover {
+        color: #fff;
+    }
+    .custom > .angular-calendar > ._days > ._day.-selectable {
+        border-radius: 3px;
+    }
+    .custom > .angular-calendar > ._days > ._day.-selectable.-selected {
+        background: #ff4795;
+    }
+    .custom > .angular-calendar > ._days > ._day.-selectable.-today {
+        border-color: #a8004f;
+    }
+    .custom > .angular-calendar > ._days > ._day.-selectable:hover {
+        background: #ff71b9;
+    }
     </style>
     <script src="bower_components/angular/angular.js"></script>
     <script src="../angular-calendar.js"></script>
@@ -85,6 +113,12 @@ $scope.parseDate = function (s) {
     <p>
         <input type="text" ng-model="date2" placeholder="YYYY-MM-DD" />
         <calendar ng-model="date2" parse-date="parseDate" format-date="formatDate"></calendar>
+    </p>
+
+    <h2>Custom Styling</h2>
+
+    <p class="custom">
+        <calendar></calendar>
     </p>
 </body>
 </html>
