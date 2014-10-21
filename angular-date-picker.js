@@ -24,7 +24,7 @@
 + '        {{ months[month].shortName }} {{ year }}'
 + '        <button type="button" class="_next" title="Next Month" ng-click="changeMonthBy(1)">&raquo;</button>'
 + '    </div>'
-+ '    <div class="_days" ng-mousedown="pickDay($event)">'
++ '    <div class="_days" ng-click="pickDay($event)">'
 + '        <div class="_day-of-week" ng-repeat="dayOfWeek in daysOfWeek">{{ dayOfWeek.letter }}</div>'
 + '        <div class="_day -padding" ng-repeat="day in leadingDays">{{ day }}</div>'
 + '        <div class="_day -selectable" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }" title="{{ day === today ? \'Today\' : \'\' }}">{{ day }}</div>'
@@ -168,8 +168,6 @@
                         }
 
                         $scope.onDateSelected();
-
-                        evt.preventDefault();
                     }
                 };
             }
