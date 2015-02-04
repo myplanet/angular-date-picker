@@ -28,7 +28,23 @@
     <script>
         hljs.initHighlightingOnLoad();
 
-        angular.module('demo', [ 'mp.datePicker' ]);
+        angular.module('demo', [ 'mp.datePicker' ]).run(function ($rootScope) {
+            $rootScope.formatDateYYYYMMDD = function (date) {
+                function pad(n) {
+                    return n < 10 ? '0' + n : n;
+                }
+
+                return date && date.getFullYear()
+                    + '-' + pad(date.getMonth() + 1)
+                    + '-' + pad(date.getDate());
+            };
+
+            $rootScope.parseDateYYYYMMDD = function (s) {
+                var tokens = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+
+                return tokens && new Date(tokens[1], tokens[2] - 1, tokens[3]);
+            };
+        });
     </script>
 </head>
 <body>
@@ -79,7 +95,7 @@
                 <h3 id="overview">Overview</h3>
 
                 <p><strong>angular-date-picker</strong> is a lightweight calendar that acts
-                    like a custom input element through regular <a href="https://docs.angularjs.org/api/ng/directive/ngModel">ng-model</a> bindings. It is:</p>
+                    like a custom input element through regular <a href="https://docs.angularjs.org/api/ng/directive/ngModel">ngModel</a> bindings. It is:</p>
 
                 <ul>
                     <li>Pure CSS &ndash; does not use any images</li>
@@ -122,15 +138,107 @@
 -->angular.module('app', [ 'mp.datePicker' ]);<!--
                 --></code></pre>
 
-                <p>Then use the <strong>&lt;date-picker&gt;</strong> element along with an <strong>ng-model</strong> directive for two-way binding with a scope variable:</p>
+                <p>Then use the <code>&lt;date-picker&gt;</code> element along with an <code>ng-model</code> directive for two-way binding with a scope variable:</p>
 
                 <pre><code class="lang-html"><!--
 -->&lt;date-picker ng-model=&quot;date&quot;&gt;
 &lt;/date-picker&gt;<!--
                 --></code></pre>
 
-                <p>Feel free to override the styles defined in <strong>angular-date-picker.css</strong> to match the style of your application.</p>
-            </div>
+                <p>By default, the locale date format is used. To use a custom format, first set up a formatter and a parser in your scope:</p>
+
+                <pre><code class="lang-js"><!--
+-->$scope.formatDate = function (date) {
+    function pad(n) {
+        return n &lt; 10 ? '0' + n : n;
+    }
+
+    return date &amp;&amp; date.getFullYear()
+        + '-' + pad(date.getMonth() + 1)
+        + '-' + pad(date.getDate());
+};
+
+$scope.parseDate = function (s) {
+    var tokens = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+
+    return tokens &amp;&amp; new Date(tokens[1], tokens[2] - 1, tokens[3]);
+};<!--
+                --></code></pre>
+
+                <p>Then pass these functions to the <code><a href="#format-date">format-date</a></code> and <code><a href="#parse-date">parse-date</a></code> attributes:</p>
+
+                <pre><code class="lang-html"><!--
+-->&lt;date-picker ng-model=&quot;date&quot; format-date=&quot;formatDate&quot; parse-date=&quot;parseDate&quot;&gt;
+&lt;/date-picker&gt;
+&lt;input ng-model=&quot;date&quot;&gt;<!--
+                --></code></pre>
+
+                <p><a href="javascript:void(0)" ng-click="isFormattingExampleShown = !isFormattingExampleShown">Toggle Example</a></p>
+
+                <div ng-if="isFormattingExampleShown" ng-init="date = null; formatDate = formatDateYYYYMMDD; parseDate = parseDateYYYYMMDD">
+                    <date-picker ng-model="date" format-date="formatDate" parse-date="parseDate"></date-picker>
+                    <input ng-model="date">
+                </div>
+
+                <h4>Attributes</h4>
+
+                <dl>
+                    <dt id="format-date">format-date</dt>
+                    <dd><strong>Optional.</strong> Allows for custom formatting of date values selected by the date picker, before they are fed back to the model. This must be a function that takes a <code>Date</code> object and returns a string. By default, the locale date format is used via <code>Date.prototype.toLocaleDateString()</code>.</dd>
+
+                    <dt id="parse-date">parse-date</dt>
+                    <dd><strong>Optional.</strong> Allows for custom parsing of date values coming from the model. This must be a function that takes a string and returns a <code>Date</code> object. By default, the <code>Date</code> constructor is used.</dd>
+
+                    <dt>on-date-selected</dt>
+                    <dd><strong>Optional.</strong> Expression to evaluate when a date is picked. This is a convenience feature to do things like close a calendar dropdown when a date is picked, especially for cases where watching the model for changes may not be enough. <strong>Example:</strong> <code>on-date-selected="closeDropdown()"</code></dd>
+                </dl>
+
+                <h4>Theming</h4>
+
+                <p>You can override the styles defined in <strong>angular-date-picker.css</strong> to match the style of your application. The classes and specifiers that are used are:</p>
+
+                <dl>
+                    <dt>.angular-date-picker</dt>
+                    <dd>The top-level container for the entire calendar.</dd>
+
+                    <dt>.angular-date-picker > ._month</dt>
+                    <dd>The header containing the month and year.</dd>
+
+                    <dt>.angular-date-picker > ._month > button</dt>
+                    <dd>The previous month and next month buttons.</dd>
+
+                    <dt>.angular-date-picker > ._month > button._previous</dt>
+                    <dd>The previous month button.</dd>
+
+                    <dt>.angular-date-picker > ._month > button._next</dt>
+                    <dd>The next month button.</dd>
+
+                    <dt>.angular-date-picker > ._days</dt>
+                    <dd>The container that holds day of week headers and days of the month.</dd>
+
+                    <dt>.angular-date-picker > ._days > ._day-of-week</dt>
+                    <dd>A day of week header.</dd>
+
+                    <dt>.angular-date-picker > ._days > ._day</dt>
+                    <dd>Any day.</dd>
+
+                    <dt>.angular-date-picker > ._days > ._day.-padding</dt>
+                    <dd>A day that falls outside the selected month. These days are not selectable.</dd>
+
+                    <dt>.angular-date-picker > ._days > ._day.-selectable</dt>
+                    <dd>A day of the selected month. These days are selectable. This is the opposite of <code>.-padding</code>.</dd>
+
+                    <dt>.angular-date-picker > ._days > ._day.-selectable.-selected</dt>
+                    <dd>The selected day.</dd>
+
+                    <dt>.angular-date-picker > ._days > ._day.-selectable.-today</dt>
+                    <dd>If the current month is being shown, this marks today.</dd>
+                </dl>
+
+                <h3>Limitations</h3>
+
+                <p>There is currently no localization support.</p>
+             </div>
         </section>
     </article>
     <footer>

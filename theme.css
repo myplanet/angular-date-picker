@@ -104,6 +104,7 @@ article h3, article h4 {
 }
 article p {
     margin: 0 0 20px;
+    line-height: 1.5em;
 }
 article pre {
     border-radius: 4px;
@@ -111,6 +112,11 @@ article pre {
     margin: 0 0 20px;
 }
 article code {
+    background: #f0f0f0 !important;
+    padding: 0 .33em;
+    border-radius: 4px;
+}
+article pre code {
     border-radius: 4px;
     padding: 10px !important;
 }
@@ -141,6 +147,7 @@ article blockquote {
     border-left: 5px solid #f4f4f4;
     padding: 0 0 0 1em;
     font-style: italic;
+    line-height: 1.5em;
 }
 article table {
     margin: 0 0 20px 0;
@@ -182,7 +189,7 @@ section {
     color: #f05a28;
 }
 .showcase-content code {
-    background: #fff;
+    background: #fff !important;
 }
 .showcase-content:after {
     content: '';
