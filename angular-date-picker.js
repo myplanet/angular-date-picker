@@ -3,6 +3,8 @@
         define([ 'module', 'angular' ], function (module, angular) {
             module.exports = factory(angular);
         });
+    } else if (typeof module === 'object') {
+        module.exports = factory(require('angular'));
     } else {
         if (!root.mp) {
             root.mp = {};
