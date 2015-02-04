@@ -1,0 +1,26 @@
+{
+  "name": "angular-date-picker",
+  "version": "1.0.0",
+  "description": "A lightweight calendar component for Angular",
+  "main": "angular-date-picker.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/myplanetdigital/angular-date-picker.git"
+  },
+  "keywords": [
+    "angular",
+    "calendar",
+    "date"
+  ],
+  "author": "Ates Goral <ates@magnetiq.com> (http://magnetiq.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/myplanetdigital/angular-date-picker/issues"
+  }
+}
