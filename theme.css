@@ -1,0 +1,235 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-size: 100%;
+    font-family: Plantin, serif;
+    color: #333;
+}
+h1, h2, h3, h4 {
+    font-family: TradeGothic, sans-serif;
+    font-weight: normal;
+    margin: 0 0 20px;
+}
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 2.25em;
+}
+h3 {
+    font-size: 1.75em;
+}
+h4 {
+    font-size: 1.125em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+a {
+    text-decoration: none;
+    color: #f05a28;
+}
+a:hover {
+    text-decoration: underline;
+}
+.content-wrap {
+    width: 620px;
+    margin: 0 auto;
+}
+body > header {
+    background: #232323 url(assets/header-bg.png) 50% 122% no-repeat;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    text-align: center;
+}
+body > header a.logo {
+    background: transparent url(assets/logo.png) 50% 0 no-repeat;
+    display: inline-block;
+    width: 72px;
+    height: 80px;
+    text-indent: -9999px;
+}
+body > header a.logo:hover {
+    background-image: url(assets/logo-hover.png);
+}
+body > header h1 {
+    color: #fff;
+    margin: 0;
+    margin-bottom: 15px;
+}
+body > header h1 a {
+    color: #fff;
+}
+body > header h1 a:hover {
+    color: #f05a28;
+    text-decoration: none;
+}
+body > header h2 {
+    color: #f05a28;
+    margin: 0;
+}
+body > nav {
+    background: #f05a28;
+    font-family: TradeGothic, sans-serif;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0;
+    margin-bottom: 40px;
+}
+body > nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+body > nav ul > li {
+    display: inline;
+    font-size: 16px;
+}
+body > nav ul > li > a {
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #fff;
+    margin: 0 5px;
+}
+body > nav ul > li > a:hover {
+    background: #fff;
+    color: #f05a28;
+    text-decoration: none;
+}
+article h3, article h4 {
+    margin-top: 40px;
+}
+article p {
+    margin: 0 0 20px;
+}
+article pre {
+    border-radius: 4px;
+    font-family: monospace;
+    margin: 0 0 20px;
+}
+article code {
+    border-radius: 4px;
+    padding: 10px !important;
+}
+article ol, article ul {
+    margin: 0 0 20px;
+    padding: 0 0 0 1em;
+    line-height: 1.5em;
+    list-style-position: inside;
+}
+article li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+article dl {
+    margin: 0 0 20px;
+    line-height: 1.5em;
+}
+article dl dt {
+    font-family: TradeGothic, sans-serif;
+    color: #f05a28;
+    font-weight: bold;
+}
+article dl dd {
+    margin: 0 0 0 1em;
+}
+article blockquote {
+    margin: 0 0 20px 1em;
+    border-left: 5px solid #f4f4f4;
+    padding: 0 0 0 1em;
+    font-style: italic;
+}
+article table {
+    margin: 0 0 20px 0;
+    width: 100%;
+    font-family: TradeGothic, sans-serif;
+}
+article td, article th {
+    border-bottom: 1px dotted #cccccc;
+    padding: .5em 0;
+}
+article thead td, article thead th {
+    padding-top: 0;
+}
+article thead td {
+    color: #f05a28;
+    font-weight: bold;
+}
+article th {
+    text-align: left;
+    font-weight: bold;
+}
+section {
+    clear: both;
+}
+.showcase {
+    margin-bottom: 40px;
+    background: #f0f0f0;
+    padding: 20px 0 60px;
+}
+.showcase-example {
+    width: 300px;
+    float: left;
+    background: #fff;
+}
+.showcase-content {
+    margin-left: 320px;
+}
+.showcase-content > h3 {
+    color: #f05a28;
+}
+.showcase-content code {
+    background: #fff;
+}
+.showcase-content:after {
+    content: '';
+    display: block;
+    clear: left;
+}
+img.float-right {
+    float: right;
+    margin: 0 0 20px 20px;
+}
+body > footer {
+    background: #232323;
+    color: #fff;
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    font-family: TradeGothic, sans-serif;
+}
+body > footer .love {
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    background: url(assets/love-bg.png);
+    text-indent: -9999px;
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and ( min--moz-device-pixel-ratio: 2),
+only screen and ( -o-min-device-pixel-ratio: 2/1),
+only screen and ( min-device-pixel-ratio: 2),
+only screen and ( min-resolution: 192dpi),
+only screen and ( min-resolution: 2dppx)
+{
+    body > header {
+        background-image: url(assets/header-bg-x2.png);
+        background-size: 260px 123px;
+    }
+    body > header a.logo {
+        background-image: url(assets/logo-x2.png);
+        background-size: 72px 72px;
+    }
+    body > header a.logo:hover {
+        background-image: url(assets/logo-hover-x2.png);
+        background-size: 72px 72px;
+    }
+    body > footer .love {
+        background-image: url(assets/love-bg-x2.png);
+        background-size: 21px 21px;
+    }
+}

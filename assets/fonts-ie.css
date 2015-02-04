@@ -1,0 +1,91 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 2716117, 2013-12-31T12:09:17-0500
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: Trade Gothic by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/trade-gothic/trade-gothic-63882/
+ * Copyright: Part of the digitally encoded machine readable outline data for producing the Typefaces provided is copyrighted (c) 1989, 1992, 2003 Linotype Library GmbH, www.linotype.com. All rights reserved. This software is the property of Linotype Library GmbH, and
+ * Licensed pageviews: 1,000,000
+ *
+ * Webfont: Trade Gothic Bold No. 2 by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/trade-gothic/bold-no-2-63882/
+ * Copyright: Part of the digitally encoded machine readable outline data for producing the Typefaces provided is copyrighted (c) 1989, 1992, 2003 Linotype Library GmbH, www.linotype.com. All rights reserved. This software is the property of Linotype Library GmbH, and
+ * Licensed pageviews: 2,000,000
+ *
+ * Webfont: Plantin Std Bold by Monotype
+ * URL: http://www.myfonts.com/fonts/mti/plantin/std-bold/
+ * Copyright: Font software Copyright 1990, 1995, 2002 Adobe Systems Incorporated. All rights reserved. Typeface designs Copyright The Monotype Corporation. All rights reserved.
+ * Licensed pageviews: 1,000,000
+ *
+ * Webfont: Plantin Std Bold Italic by Monotype
+ * URL: http://www.myfonts.com/fonts/mti/plantin/std-bold-italic/
+ * Copyright: Font software Copyright 1990, 1995, 2002 Adobe Systems Incorporated. All rights reserved. Typeface designs Copyright The Monotype Corporation. All rights reserved.
+ * Licensed pageviews: 1,000,000
+ *
+ * Webfont: Plantin Std Italic by Monotype
+ * URL: http://www.myfonts.com/fonts/mti/plantin/std-italic/
+ * Copyright: Font software Copyright 1990, 1995, 2002 Adobe Systems Incorporated. All rights reserved. Typeface designs Copyright The Monotype Corporation. All rights reserved.
+ * Licensed pageviews: 1,000,000
+ *
+ * Webfont: Plantin Std Roman by Monotype
+ * URL: http://www.myfonts.com/fonts/mti/plantin/std-roman/
+ * Copyright: Font software Copyright 1990, 1995, 2002 Adobe Systems Incorporated. All rights reserved. Typeface designs Copyright The Monotype Corporation. All rights reserved.
+ * Licensed pageviews: 1,000,000
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2716117
+ *
+ * © 2013 MyFonts Inc
+*/
+
+@font-face {
+    font-family: 'TradeGothic';
+    src: url('fonts/2971D5_0_0.eot');
+    src: url('fonts/2971D5_0_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/2971D5_0_0.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'TradeGothicBold';
+    src: url('fonts/2971D5_1_0.eot');
+    src: url('fonts/2971D5_1_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/2971D5_1_0.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'PlantinBold';
+    src: url('fonts/2971D5_2_0.eot');
+    src: url('fonts/2971D5_2_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/2971D5_2_0.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'PlantinBoldItalic';
+    src: url('fonts/2971D5_3_0.eot');
+    src: url('fonts/2971D5_3_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/2971D5_3_0.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'PlantinItalic';
+    src: url('fonts/2971D5_4_0.eot');
+    src: url('fonts/2971D5_4_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/2971D5_4_0.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Plantin';
+    src: url('fonts/2971D5_5_0.eot');
+    src: url('fonts/2971D5_5_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/2971D5_5_0.woff') format('woff');
+}
