@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="//cdn.rawgit.com/myplanetdigital/gh-pages-theme/v1.0.0/assets/fonts.css" />
     <link rel="stylesheet" href="//cdn.rawgit.com/myplanetdigital/gh-pages-theme/v1.0.0/theme.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" />
-    <link rel="stylesheet" href="//cdn.rawgit.com/myplanetdigital/angular-date-picker/v1.0.1/angular-date-picker.css" />
+    <link rel="stylesheet" href="//cdn.rawgit.com/myplanetdigital/angular-date-picker/v1.1.0/angular-date-picker.css" />
     <style>
     .showcase-example {
         text-align: center;
@@ -24,7 +24,7 @@
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.9/angular.js"></script>
-    <script src="//cdn.rawgit.com/myplanetdigital/angular-date-picker/v1.0.1/angular-date-picker.js"></script>
+    <script src="//cdn.rawgit.com/myplanetdigital/angular-date-picker/v1.1.0/angular-date-picker.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
 
@@ -59,7 +59,7 @@
         <div class="content-wrap">
             <ul>
                 <li><a href="#overview">Overview</a></li>
-                <li><a href="#download">Download <strong>v1.0.1</strong></a></li>
+                <li><a href="#download">Download <strong>v1.1.0</strong></a></li>
                 <li><a href="#usage">Usage</a></li>
                 <li><a href="https://github.com/myplanetdigital/angular-date-picker">View on <strong>GitHub</strong></a></li>
             </ul>
@@ -98,6 +98,7 @@
                     like a custom input element through regular <a href="https://docs.angularjs.org/api/ng/directive/ngModel">ngModel</a> bindings. It is:</p>
 
                 <ul>
+                    <li><a href="https://docs.angularjs.org/guide/i18n">Localizable</a></li>
                     <li>Pure CSS &ndash; does not use any images</li>
                     <li>Pure Angular &ndash; does not rely on any other libraries</li>
                     <li>Compatible with IE8+</li>
@@ -193,6 +194,17 @@ $scope.parseDate = function (s) {
                     <dd><strong>Optional.</strong> Expression to evaluate when a date is picked. This is a convenience feature to do things like close a calendar dropdown when a date is picked, especially for cases where watching the model for changes may not be enough. <strong>Example:</strong> <code>on-date-selected="closeDropdown()"</code></dd>
                 </dl>
 
+                <h4>Localization</h4>
+
+                <p>The following properties of the <a href="https://docs.angularjs.org/api/ng/service/$locale">$locale</a> service are being used for rendering localized month names, days of the week; and also for determining the first day of the week:</p>
+
+                <ul>
+                    <li><code>DATETIME_FORMATS.FIRSTDAYOFWEEK</code></li>
+                    <li><code>DATETIME_FORMATS.MONTH</code></li>
+                    <li><code>DATETIME_FORMATS.SHORTMONTH</code></li>
+                    <li><code>DATETIME_FORMATS.DAY</code></li>
+                </ul>
+
                 <h4>Theming</h4>
 
                 <p>You can override the styles defined in <strong>angular-date-picker.css</strong> to match the style of your application. The classes and specifiers that are used are:</p>
@@ -234,10 +246,6 @@ $scope.parseDate = function (s) {
                     <dt>.angular-date-picker > ._days > ._day.-selectable.-today</dt>
                     <dd>If the current month is being shown, this marks today.</dd>
                 </dl>
-
-                <h3>Limitations</h3>
-
-                <p>There is currently no localization support.</p>
              </div>
         </section>
     </article>
