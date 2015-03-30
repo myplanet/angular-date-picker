@@ -15,25 +15,50 @@
 }(this, function (angular) {
     'use strict';
 
-    return angular.module('mp.datePicker', []).directive('datePicker', [ '$window', function ($window) {
+    return angular.module('mp.datePicker', []).directive('datePicker', [ '$window', '$locale', function ($window, $locale) {
         // Introduce custom elements for IE8
         $window.document.createElement('date-picker');
 
         var tmpl = ''
 + '<div class="angular-date-picker">'
 + '    <div class="_month">'
-+ '        <button type="button" class="_previous" title="Previous Month" ng-click="changeMonthBy(-1)">&laquo;</button>'
-+ '        {{ months[month].shortName }} {{ year }}'
-+ '        <button type="button" class="_next" title="Next Month" ng-click="changeMonthBy(1)">&raquo;</button>'
++ '        <button type="button" class="_previous" ng-click="changeMonthBy(-1)">&laquo;</button>'
++ '        <span title="{{ months[month].fullName }}">{{ months[month].shortName }}</span> {{ year }}'
++ '        <button type="button" class="_next" ng-click="changeMonthBy(1)">&raquo;</button>'
 + '    </div>'
 + '    <div class="_days" ng-click="pickDay($event)">'
-+ '        <div class="_day-of-week" ng-repeat="dayOfWeek in daysOfWeek">{{ dayOfWeek.letter }}</div>'
++ '        <div class="_day-of-week" ng-repeat="dayOfWeek in daysOfWeek" title="{{ dayOfWeek.fullName }}">{{ dayOfWeek.firstLetter }}</div>'
 + '        <div class="_day -padding" ng-repeat="day in leadingDays">{{ day }}</div>'
-+ '        <div class="_day -selectable" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }" title="{{ day === today ? \'Today\' : \'\' }}">{{ day }}</div>'
++ '        <div class="_day -selectable" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }">{{ day }}</div>'
 + '        <div class="_day -padding" ng-repeat="day in trailingDays">{{ day }}</div>'
 + '    </div>'
 + '</div>'
         ;
+
+        var days = [], // Slices of this are used for ngRepeat
+            months = [],
+            daysOfWeek = [],
+            firstDayOfWeek = $locale.DATETIME_FORMATS.FIRSTDAYOFWEEK || 0;
+
+        for (var i = 1; i <= 31; i++) {
+            days.push(i);
+        }
+
+        for (var i = 0; i < 12; i++) {
+            months.push({
+                fullName: $locale.DATETIME_FORMATS.MONTH[i],
+                shortName: $locale.DATETIME_FORMATS.SHORTMONTH[i]
+            });
+        }
+
+        for (var i = 0; i < 7; i++) {
+            var day = $locale.DATETIME_FORMATS.DAY[(i + firstDayOfWeek) % 7];
+
+            daysOfWeek.push({
+                fullName: day,
+                firstLetter: day.substr(0, 1)
+            });
+        }
 
         return {
             restrict: 'AE',
@@ -42,60 +67,15 @@
             require: '?ngModel',
             scope: {
                 onDateSelected: '&',
-                formatDate: '=',
-                parseDate: '='
+                formatDate: '=', // @todo breaking change: change to & to allow use of date filter directly
+                parseDate: '=' // @todo change to &
             },
 
             link: function ($scope, $element, $attributes, ngModel) {
-                // Slices of this are used for ngRepeat
-                var days = [],
-                    selectedDate = null;
+                var selectedDate = null;
 
-                for (var i = 1; i <= 31; i++) {
-                    days.push(i);
-                }
-
-                $scope.months = [{
-                    shortName: 'Jan'
-                }, {
-                    shortName: 'Feb'
-                }, {
-                    shortName: 'Mar'
-                }, {
-                    shortName: 'Apr'
-                }, {
-                    shortName: 'May'
-                }, {
-                    shortName: 'Jun'
-                }, {
-                    shortName: 'Jul'
-                }, {
-                    shortName: 'Aug'
-                }, {
-                    shortName: 'Sep'
-                }, {
-                    shortName: 'Oct'
-                }, {
-                    shortName: 'Nov'
-                }, {
-                    shortName: 'Dec'
-                }];
-
-                $scope.daysOfWeek = [{
-                    letter: 'S'
-                }, {
-                    letter: 'M'
-                }, {
-                    letter: 'T'
-                }, {
-                    letter: 'W'
-                }, {
-                    letter: 'T'
-                }, {
-                    letter: 'F'
-                }, {
-                    letter: 'S'
-                }];
+                $scope.months = months;
+                $scope.daysOfWeek = daysOfWeek;
 
                 function setYearAndMonth(date) {
                     $scope.year = date.getFullYear();
@@ -119,7 +99,7 @@
                         daysInMonth = lastDayOfMonth.getDate(),
                         daysInLastMonth = lastDayOfPreviousMonth.getDate(),
                         dayOfWeek = firstDayOfMonth.getDay(),
-                        leadingDays = dayOfWeek || 7; // Ensure there are always leading days to give context
+                        leadingDays = (dayOfWeek - firstDayOfWeek + 7) % 7 || 7; // Ensure there are always leading days to give context
 
                     $scope.leadingDays = days.slice(- leadingDays - (31 - daysInLastMonth), daysInLastMonth);
                     $scope.days = days.slice(0, daysInMonth);
