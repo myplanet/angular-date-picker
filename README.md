@@ -2,6 +2,7 @@
 
 angular-date-picker is a lightweight calendar that acts like a custom input element through regular ngModel bindings. It is:
 
+* Localizable via the $locale service
 * Pure CSS – does not use any images
 * Pure Angular – does not rely on any other libraries
 * Compatible with IE8+
