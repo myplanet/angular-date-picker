@@ -49,25 +49,33 @@
             link: function ($scope, $element, $attributes, ngModel) {
                 // Slices of this are used for ngRepeat
                 var days = [],
+                    months = [],
+                    daysOfWeek = [],
+                    firstDayOfWeek = $locale.DATETIME_FORMATS.FIRSTDAYOFWEEK || 0,
                     selectedDate = null;
 
                 for (var i = 1; i <= 31; i++) {
                     days.push(i);
                 }
 
-                $scope.months = $locale.DATETIME_FORMATS.MONTH.map(function (month, idx) {
-                    return {
-                        fullName: month,
-                        shortName: $locale.DATETIME_FORMATS.SHORTMONTH[idx]
-                    };
-                });
+                for (var i = 0; i < 12; i++) {
+                    months.push({
+                        fullName: $locale.DATETIME_FORMATS.MONTH[i],
+                        shortName: $locale.DATETIME_FORMATS.SHORTMONTH[i]
+                    });
+                }
 
-                $scope.daysOfWeek = $locale.DATETIME_FORMATS.DAY.map(function (day) {
-                    return {
+                for (var i = 0; i < 7; i++) {
+                    var day = $locale.DATETIME_FORMATS.DAY[(i + firstDayOfWeek) % 7];
+
+                    daysOfWeek.push({
                         fullName: day,
                         firstLetter: day.substr(0, 1)
-                    };
-                });
+                    });
+                }
+
+                $scope.months = months;
+                $scope.daysOfWeek = daysOfWeek;
 
                 function setYearAndMonth(date) {
                     $scope.year = date.getFullYear();
@@ -91,7 +99,7 @@
                         daysInMonth = lastDayOfMonth.getDate(),
                         daysInLastMonth = lastDayOfPreviousMonth.getDate(),
                         dayOfWeek = firstDayOfMonth.getDay(),
-                        leadingDays = dayOfWeek || 7; // Ensure there are always leading days to give context
+                        leadingDays = (dayOfWeek - firstDayOfWeek + 7) % 7 || 7; // Ensure there are always leading days to give context
 
                     $scope.leadingDays = days.slice(- leadingDays - (31 - daysInLastMonth), daysInLastMonth);
                     $scope.days = days.slice(0, daysInMonth);
