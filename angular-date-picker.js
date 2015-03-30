@@ -22,14 +22,14 @@
         var tmpl = ''
 + '<div class="angular-date-picker">'
 + '    <div class="_month">'
-+ '        <button type="button" class="_previous" title="{{ prevMonthText() }}" ng-click="changeMonthBy(-1)">&laquo;</button>'
++ '        <button type="button" class="_previous" ng-click="changeMonthBy(-1)">&laquo;</button>'
 + '        <span title="{{ months[month].fullName }}">{{ months[month].shortName }}</span> {{ year }}'
-+ '        <button type="button" class="_next" title="{{ nextMonthText() }}" ng-click="changeMonthBy(1)">&raquo;</button>'
++ '        <button type="button" class="_next" ng-click="changeMonthBy(1)">&raquo;</button>'
 + '    </div>'
 + '    <div class="_days" ng-click="pickDay($event)">'
 + '        <div class="_day-of-week" ng-repeat="dayOfWeek in daysOfWeek" title="{{ dayOfWeek.fullName }}">{{ dayOfWeek.firstLetter }}</div>'
 + '        <div class="_day -padding" ng-repeat="day in leadingDays">{{ day }}</div>'
-+ '        <div class="_day -selectable" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }" title="{{ day === today ? todayText() : \'\' }}">{{ day }}</div>'
++ '        <div class="_day -selectable" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }">{{ day }}</div>'
 + '        <div class="_day -padding" ng-repeat="day in trailingDays">{{ day }}</div>'
 + '    </div>'
 + '</div>'
@@ -67,9 +67,6 @@
             require: '?ngModel',
             scope: {
                 onDateSelected: '&',
-                prevMonthText: '&',
-                nextMonthText: '&',
-                todayText: '&',
                 formatDate: '=', // @todo breaking change: change to & to allow use of date filter directly
                 parseDate: '=' // @todo change to &
             },
