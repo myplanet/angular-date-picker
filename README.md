@@ -7,4 +7,4 @@ angular-date-picker is a lightweight calendar that acts like a custom input elem
 * Pure Angular – does not rely on any other libraries
 * Compatible with IE8+
 
-[Demo and documentation](http://myplanetdigital.github.io/angular-date-picker/)
+[Demo and documentation](http://myplanet.github.io/angular-date-picker/)
