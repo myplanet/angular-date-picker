@@ -35,31 +35,6 @@
 + '</div>'
         ;
 
-        var days = [], // Slices of this are used for ngRepeat
-            months = [],
-            daysOfWeek = [],
-            firstDayOfWeek = $locale.DATETIME_FORMATS.FIRSTDAYOFWEEK || 0;
-
-        for (var i = 1; i <= 31; i++) {
-            days.push(i);
-        }
-
-        for (var i = 0; i < 12; i++) {
-            months.push({
-                fullName: $locale.DATETIME_FORMATS.MONTH[i],
-                shortName: $locale.DATETIME_FORMATS.SHORTMONTH[i]
-            });
-        }
-
-        for (var i = 0; i < 7; i++) {
-            var day = $locale.DATETIME_FORMATS.DAY[(i + firstDayOfWeek) % 7];
-
-            daysOfWeek.push({
-                fullName: day,
-                firstLetter: day.substr(0, 1)
-            });
-        }
-
         return {
             restrict: 'AE',
             template: tmpl,
@@ -72,7 +47,31 @@
             },
 
             link: function ($scope, $element, $attributes, ngModel) {
-                var selectedDate = null;
+                var selectedDate = null,
+                    days = [], // Slices of this are used for ngRepeat
+                    months = [],
+                    daysOfWeek = [],
+                    firstDayOfWeek = $locale.DATETIME_FORMATS.FIRSTDAYOFWEEK || 0;
+
+                for (var i = 1; i <= 31; i++) {
+                    days.push(i);
+                }
+
+                for (var i = 0; i < 12; i++) {
+                    months.push({
+                        fullName: $locale.DATETIME_FORMATS.MONTH[i],
+                        shortName: $locale.DATETIME_FORMATS.SHORTMONTH[i]
+                    });
+                }
+
+                for (var i = 0; i < 7; i++) {
+                    var day = $locale.DATETIME_FORMATS.DAY[(i + firstDayOfWeek) % 7];
+
+                    daysOfWeek.push({
+                        fullName: day,
+                        firstLetter: day.substr(0, 1)
+                    });
+                }
 
                 $scope.months = months;
                 $scope.daysOfWeek = daysOfWeek;
