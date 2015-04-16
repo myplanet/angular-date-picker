@@ -7,6 +7,11 @@
   "authors": [
     "Ates Goral <ates.g@myplanet.com>"
   ],
+  "keywords": [
+    "angular",
+    "calendar",
+    "date"
+  ],
   "moduleType": [
     "amd",
     "globals",
