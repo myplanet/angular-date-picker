@@ -146,7 +146,7 @@
 &lt;/date-picker&gt;<!--
                 --></code></pre>
 
-                <p>By default, the locale date format is used. To use a custom format, first set up a formatter and a parser in your scope:</p>
+                <p>The date format is set to the active locale by default. To use a custom format, first set up a formatter and a parser in your scope:</p>
 
                 <pre><code class="lang-js"><!--
 -->$scope.formatDate = function (date) {
@@ -185,7 +185,7 @@ $scope.parseDate = function (s) {
 
                 <dl>
                     <dt id="format-date">format-date</dt>
-                    <dd><strong>Optional.</strong> Allows for custom formatting of date values selected by the date picker, before they are fed back to the model. This must be a function that takes a <code>Date</code> object and returns a string. By default, the locale date format is used via <code>Date.prototype.toLocaleDateString()</code>.</dd>
+                    <dd><strong>Optional.</strong> Allows for custom formatting of date values selected by the date picker, before they are fed back to the model. This must be a function that takes a <code>Date</code> object and returns a string. By default, <code>Date.prototype.toLocaleDateString()</code> is used.</dd>
 
                     <dt id="parse-date">parse-date</dt>
                     <dd><strong>Optional.</strong> Allows for custom parsing of date values coming from the model. This must be a function that takes a string and returns a <code>Date</code> object. By default, the <code>Date</code> constructor is used.</dd>
@@ -196,7 +196,7 @@ $scope.parseDate = function (s) {
 
                 <h4>Localization</h4>
 
-                <p>The following properties of the <a href="https://docs.angularjs.org/api/ng/service/$locale">$locale</a> service are being used for rendering localized month names, days of the week; and also for determining the first day of the week:</p>
+                <p>The following properties of the <a href="https://docs.angularjs.org/api/ng/service/$locale">$locale</a> service are being used for rendering localized month names, days of the week, and also for determining the first day of the week:</p>
 
                 <ul>
                     <li><code>DATETIME_FORMATS.FIRSTDAYOFWEEK</code></li>
