@@ -1,6 +1,6 @@
 {
   "name": "angular-date-picker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Lightweight Calendar for Angular",
   "main": "angular-date-picker.js",
   "repository": {
