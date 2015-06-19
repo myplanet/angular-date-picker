@@ -1,10 +1,9 @@
 {
   "name": "angular-date-picker",
   "main": [
-      "angular-date-picker.js",
-      "angular-date-picker.css"
-    ],
-  "version": "1.2.0",
+    "angular-date-picker.js",
+    "angular-date-picker.css"
+  ],
   "homepage": "https://github.com/myplanet/angular-date-picker",
   "description": "Lightweight Calendar for Angular",
   "authors": [
