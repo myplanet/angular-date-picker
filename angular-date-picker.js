@@ -28,9 +28,9 @@
 + '    </div>'
 + '    <div class="_days" ng-click="pickDay($event)">'
 + '        <div class="_day-of-week" ng-repeat="dayOfWeek in daysOfWeek" title="{{ dayOfWeek.fullName }}">{{ dayOfWeek.firstLetter }}</div>'
-+ '        <div class="_day -padding" ng-repeat="day in leadingDays">{{ day }}</div>'
++ '        <div class="_day -padding -leadingDay" ng-repeat="day in leadingDays" ng-class="{ \'-selectable\': leadingDaysSelectable }">{{ day }}</div>'
 + '        <div class="_day -selectable" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }">{{ day }}</div>'
-+ '        <div class="_day -padding" ng-repeat="day in trailingDays">{{ day }}</div>'
++ '        <div class="_day -padding -trailingDay" ng-repeat="day in trailingDays" ng-class="{ \'-selectable\': trailingDaysSelectable }">{{ day }}</div>'
 + '    </div>'
 + '</div>'
         ;
@@ -43,7 +43,9 @@
             scope: {
                 onDateSelected: '&',
                 formatDate: '=', // @todo breaking change: change to & to allow use of date filter directly
-                parseDate: '=' // @todo change to &
+                parseDate: '=', // @todo change to &
+                leadingDaysSelectable: '=',
+                trailingDaysSelectable: '='
             },
 
             link: function ($scope, $element, $attributes, ngModel) {
@@ -133,7 +135,14 @@
 
                 $scope.pickDay = function (evt) {
                     var target = angular.element(evt.target);
-
+                    
+                    if (target.hasClass('-leadingDay')) {
+                        $scope.month--;
+                    }
+                    if (target.hasClass('-trailingDay')) {
+                        $scope.month++;
+                    }
+                    
                     if (target.hasClass('-selectable')) {
                         var day = parseInt(target.text(), 10);
 
