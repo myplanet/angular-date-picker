@@ -50,18 +50,17 @@
 }
 .angular-date-picker > ._days > ._day.-padding {
     opacity: .5;
-    cursor: default;
 }
-.angular-date-picker > ._days > ._day.-selectable {
+.angular-date-picker > ._days > ._day {
     cursor: pointer;
 }
-.angular-date-picker > ._days > ._day.-selectable.-selected {
+.angular-date-picker > ._days > ._day.-selected {
     background: #e0e0e0;
 }
-.angular-date-picker > ._days > ._day.-selectable.-today {
+.angular-date-picker > ._days > ._day.-today {
     border-color: #aaa;
 }
-.angular-date-picker > ._days > ._day.-selectable:hover {
+.angular-date-picker > ._days > ._day:hover {
     background: #eee;
 }
 .angular-date-picker > ._days:after {

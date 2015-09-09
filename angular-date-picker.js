@@ -28,9 +28,9 @@
 + '    </div>'
 + '    <div class="_days" ng-click="pickDay($event)">'
 + '        <div class="_day-of-week" ng-repeat="dayOfWeek in daysOfWeek" title="{{ dayOfWeek.fullName }}">{{ dayOfWeek.firstLetter }}</div>'
-+ '        <div class="_day -padding" ng-repeat="day in leadingDays">{{ day }}</div>'
-+ '        <div class="_day -selectable" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }">{{ day }}</div>'
-+ '        <div class="_day -padding" ng-repeat="day in trailingDays">{{ day }}</div>'
++ '        <div class="_day -padding" ng-repeat="day in leadingDays" data-month-offset="-1">{{ day }}</div>'
++ '        <div class="_day" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }">{{ day }}</div>'
++ '        <div class="_day -padding" ng-repeat="day in trailingDays" data-month-offset="1">{{ day }}</div>'
 + '    </div>'
 + '</div>'
         ;
@@ -134,7 +134,13 @@
                 $scope.pickDay = function (evt) {
                     var target = angular.element(evt.target);
 
-                    if (target.hasClass('-selectable')) {
+                    if (target.hasClass('_day')) {
+                        var monthOffset = target.data('month-offset');
+
+                        if (monthOffset) {
+                            $scope.changeMonthBy(parseInt(monthOffset, 10));
+                        }
+
                         var day = parseInt(target.text(), 10);
 
                         $scope.selectedDay = day;
