@@ -135,7 +135,7 @@
                     var target = angular.element(evt.target);
 
                     if (target.hasClass('_day')) {
-                        var monthOffset = target.data('month-offset');
+                        var monthOffset = target.attr('data-month-offset');
 
                         if (monthOffset) {
                             $scope.changeMonthBy(parseInt(monthOffset, 10));
