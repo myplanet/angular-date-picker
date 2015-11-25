@@ -51,7 +51,7 @@
                     days = [], // Slices of this are used for ngRepeat
                     months = [],
                     daysOfWeek = [],
-                    firstDayOfWeek = $locale.DATETIME_FORMATS.FIRSTDAYOFWEEK || 0;
+                    firstDayOfWeek = ($locale.DATETIME_FORMATS.FIRSTDAYOFWEEK || 6) + 1 % 7;
 
                 for (var i = 1; i <= 31; i++) {
                     days.push(i);
