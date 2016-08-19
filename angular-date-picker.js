@@ -161,5 +161,6 @@
                 };
             }
         };
-    }]);
+    }])
+    .name; // pass back as dependency name
 }));
