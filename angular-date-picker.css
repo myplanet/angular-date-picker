@@ -60,6 +60,11 @@
 .angular-date-picker > ._days > ._day.-today {
     border-color: #aaa;
 }
+.angular-date-picker > ._days > ._day.-disabled {
+    background: #f7f4f4;
+    pointer-events: none;
+    cursor: none;
+}
 .angular-date-picker > ._days > ._day:hover {
     background: #eee;
 }

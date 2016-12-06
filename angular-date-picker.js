@@ -28,9 +28,9 @@
 + '    </div>'
 + '    <div class="_days" ng-click="pickDay($event)">'
 + '        <div class="_day-of-week" ng-repeat="dayOfWeek in daysOfWeek" title="{{ dayOfWeek.fullName }}">{{ dayOfWeek.firstLetter }}</div>'
-+ '        <div class="_day -padding" ng-repeat="day in leadingDays" data-month-offset="-1">{{ day }}</div>'
-+ '        <div class="_day" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }">{{ day }}</div>'
-+ '        <div class="_day -padding" ng-repeat="day in trailingDays" data-month-offset="1">{{ day }}</div>'
++ '        <div class="_day -padding" ng-repeat="day in leadingDays" data-month-offset="-1" ng-class="{ \'-disabled\': day.disabled }">{{ day.day }}</div>'
++ '        <div class="_day" ng-repeat="day in days" ng-class="{ \'-disabled\': day.disabled, \'-selected\': (day.day === selectedDay), \'-today\': (day.day === today) }">{{ day.day }}</div>'
++ '        <div class="_day -padding" ng-repeat="day in trailingDays" data-month-offset="1" ng-class="{ \'-disabled\': day.disabled }">{{ day.day }}</div>'
 + '    </div>'
 + '</div>'
         ;
@@ -43,7 +43,8 @@
             scope: {
                 onDateSelected: '&',
                 formatDate: '=', // @todo breaking change: change to & to allow use of date filter directly
-                parseDate: '=' // @todo change to &
+                parseDate: '=', // @todo change to &
+                allowDate: '='
             },
 
             link: function ($scope, $element, $attributes, ngModel) {
@@ -100,12 +101,27 @@
                         daysInMonth = lastDayOfMonth.getDate(),
                         daysInLastMonth = lastDayOfPreviousMonth.getDate(),
                         dayOfWeek = firstDayOfMonth.getDay(),
-                        leadingDays = (dayOfWeek - firstDayOfWeek + 7) % 7 || 7; // Ensure there are always leading days to give context
+                        leadingDays = (dayOfWeek - firstDayOfWeek + 7) % 7 || 7, // Ensure there are always leading days to give context
+                        checkIfDateIsAllowed = $scope.allowDate !== undefined && typeof $scope.allowDate === 'function';
 
                     $scope.leadingDays = days.slice(- leadingDays - (31 - daysInLastMonth), daysInLastMonth);
                     $scope.days = days.slice(0, daysInMonth);
                     // Ensure a total of 6 rows to maintain height consistency
                     $scope.trailingDays = days.slice(0, 6 * 7 - (leadingDays + daysInMonth));
+
+                    // Add disabled property to days
+                    $scope.leadingDays = getDaysWithDisabledProperty($scope.leadingDays, -1);
+                    $scope.days = getDaysWithDisabledProperty($scope.days, 0);
+                    $scope.trailingDays = getDaysWithDisabledProperty($scope.trailingDays, 1);
+
+                    function getDaysWithDisabledProperty(days, monthOffset) {
+                        return days.map(function(day) {
+                            if (!checkIfDateIsAllowed) {
+                                return {day: day, disabled: false};
+                            }
+                            return {day: day, disabled: !$scope.allowDate(new Date($scope.year, $scope.month + monthOffset, day))};
+                        });
+                    }
                 }
 
                 // Default to current year and month
