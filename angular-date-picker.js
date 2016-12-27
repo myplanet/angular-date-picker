@@ -43,7 +43,8 @@
             scope: {
                 onDateSelected: '&',
                 formatDate: '=', // @todo breaking change: change to & to allow use of date filter directly
-                parseDate: '=' // @todo change to &
+                parseDate: '=', // @todo change to &
+                daysOfWeekLetterLen: '@'
             },
 
             link: function ($scope, $element, $attributes, ngModel) {
@@ -71,7 +72,7 @@
 
                     daysOfWeek.push({
                         fullName: day,
-                        firstLetter: day.substr(0, 1)
+                        firstLetter: day.substr(0, $scope.daysOfWeekLetterLen)
                     });
                 }
 
