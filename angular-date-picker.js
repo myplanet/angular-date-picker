@@ -27,7 +27,7 @@
 + '        <button type="button" class="_next" ng-click="changeMonthBy(1)">&raquo;</button>'
 + '    </div>'
 + '    <div class="_days" ng-click="pickDay($event)">'
-+ '        <div class="_day-of-week" ng-repeat="dayOfWeek in daysOfWeek" title="{{ dayOfWeek.fullName }}">{{ dayOfWeek.firstLetter }}</div>'
++ '        <div class="_day-of-week" ng-repeat="dayOfWeek in daysOfWeek" title="{{ dayOfWeek.fullName }}">{{ dayOfWeek.formattedDay || dayOfWeek.firstLetter }}</div>'
 + '        <div class="_day -padding" ng-repeat="day in leadingDays" data-month-offset="-1">{{ day }}</div>'
 + '        <div class="_day" ng-repeat="day in days" ng-class="{ \'-selected\': (day === selectedDay), \'-today\': (day === today) }">{{ day }}</div>'
 + '        <div class="_day -padding" ng-repeat="day in trailingDays" data-month-offset="1">{{ day }}</div>'
@@ -43,7 +43,8 @@
             scope: {
                 onDateSelected: '&',
                 formatDate: '=', // @todo breaking change: change to & to allow use of date filter directly
-                parseDate: '=' // @todo change to &
+                parseDate: '=', // @todo change to &
+                formatDayOfWeek: '='
             },
 
             link: function ($scope, $element, $attributes, ngModel) {
@@ -71,7 +72,8 @@
 
                     daysOfWeek.push({
                         fullName: day,
-                        firstLetter: day.substr(0, 1)
+                        firstLetter: day.substr(0, 1),
+                        formattedDay: $scope.formatDayOfWeek(day)
                     });
                 }
 
