@@ -23,7 +23,7 @@
 + '<div class="angular-date-picker">'
 + '    <div class="_month">'
 + '        <button type="button" class="_previous" ng-click="changeMonthBy(-1)">&laquo;</button>'
-+ '        <span title="{{ months[month].fullName }}">{{ months[month].shortName }}</span> {{ year }}'
++ '        <span>{{ months[month] }}</span> {{ year }}'
 + '        <button type="button" class="_next" ng-click="changeMonthBy(1)">&raquo;</button>'
 + '    </div>'
 + '    <div class="_days" ng-click="pickDay($event)">'
@@ -51,7 +51,7 @@
             link: function ($scope, $element, $attributes, ngModel) {
                 var selectedDate = null,
                     days = [], // Slices of this are used for ngRepeat
-                    months = [],
+                    months = $locale.DATETIME_FORMATS.STANDALONEMONTH.slice(0),
                     daysOfWeek = [],
                     firstDayOfWeek = typeof $locale.DATETIME_FORMATS.FIRSTDAYOFWEEK === 'number'
                         ? ($locale.DATETIME_FORMATS.FIRSTDAYOFWEEK + 1) % 7
@@ -59,13 +59,6 @@
 
                 for (var i = 1; i <= 31; i++) {
                     days.push(i);
-                }
-
-                for (var i = 0; i < 12; i++) {
-                    months.push({
-                        fullName: $locale.DATETIME_FORMATS.MONTH[i],
-                        shortName: $locale.DATETIME_FORMATS.SHORTMONTH[i]
-                    });
                 }
 
                 for (var i = 0; i < 7; i++) {
